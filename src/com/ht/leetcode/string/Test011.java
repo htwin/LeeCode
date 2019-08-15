@@ -50,11 +50,48 @@ public class Test011 {
         return (int)result;
     }
 
+    /**
+     * 二
+     * @param x
+     * @return
+     * 构建反转整数的一位数字。在这样做的时候，我们可以预先检查向原整数附加另一位数字是否会导致溢出
+     * 反转整数的方法可以与反转字符串进行类比。
+     *
+     * 我们想重复“弹出” xx 的最后一位数字，并将它“推入”到 \text{rev}rev 的后面。最后，\text{rev}rev 将与 xx 相反。
+     *
+     * 要在没有辅助堆栈 / 数组的帮助下 “弹出” 和 “推入” 数字，我们可以使用数学方法。
+     * pop operation:
+     * pop = x % 10;
+     * x /= 10;
+     *
+     * push operation:
+     * temp = rev * 10 + pop;
+     * rev = temp;
+     *
+     *
+     */
+    private static int reverse2(int x){
+
+        int result = 0;
+
+        while (x!=0){
+            int pop = x%10;
+            x /= 10;
+            if(result>Integer.MAX_VALUE/10||(result==Integer.MAX_VALUE&&pop>7))return 0;
+            if(result<Integer.MIN_VALUE/10||(result==Integer.MAX_VALUE&&pop<-8))return 0;
+            result = result*10+pop;
+        }
+
+        return result;
+
+    }
+
+
 
     public static void main(String[] args) {
         System.out.println(Integer.MIN_VALUE);
         System.out.println(Integer.MAX_VALUE);
-        System.out.println(reverse(1534236469));
+        System.out.println(reverse2(123456));
         System.out.println();
     }
 }

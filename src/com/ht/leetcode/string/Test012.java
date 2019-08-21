@@ -62,14 +62,13 @@ public class Test012 {
 
         //判断第一个元素是否为非有效字符  - + 0-9
         char c0 = str.charAt(0);
-
         if(c0>='0'&&c0<='9'||c0=='-'||c0=='+'){
             newStr.append(c0);
         }else{
             return 0;
         }
 
-        //判断是否加入了数字
+
 
         //遇到非有效字符 break
         for(int i =1;i<str.length();i++){
